@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="510.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mosaic.MosaicController">
+   <children>
+      <ImageView fx:id="imageView00" fitHeight="147.0" fitWidth="255.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView01" fitHeight="147.0" fitWidth="255.0" layoutX="255.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView10" fitHeight="147.0" fitWidth="255.0" layoutX="1.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView11" fitHeight="147.0" fitWidth="255.0" layoutX="255.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView20" fitHeight="147.0" fitWidth="255.0" layoutX="1.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView21" fitHeight="147.0" fitWidth="255.0" layoutX="255.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
