@@ -1,10 +1,10 @@
 package mosaic;
 
-import java.net.URI;
-import java.util.List;
+import java.io.File;
 
 public interface ImageSource {
 	
-	public List<URI> getImageURIs();
+	public File getNext();
+	public File getRoot();
 
 }
