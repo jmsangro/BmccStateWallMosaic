@@ -2,7 +2,6 @@ package mosaic;
 
 import java.io.File;
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +31,10 @@ public class MosaicController implements Initializable  {
 	@FXML
 	ImageView imageView21;
 	@FXML
+	ImageView imageView30;
+	@FXML
+	ImageView imageView31;
+	@FXML
 	Label subText;
 	@FXML 
 	Label titleLabel;
@@ -46,11 +49,13 @@ public class MosaicController implements Initializable  {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		viewList.add(imageView00);
-		viewList.add(imageView01);
 		viewList.add(imageView10);
+		viewList.add(imageView01);
 		viewList.add(imageView11);
 		viewList.add(imageView20);
 		viewList.add(imageView21);
+		viewList.add(imageView30);
+		viewList.add(imageView31);
 
 		
 		imageSource = Main.imageSource;
@@ -72,12 +77,13 @@ public class MosaicController implements Initializable  {
 		
 	};
 	
-	private static int[] frameChangeOrder = {0,3,4,1,2,5};
+	private static int[] frameChangeOrder = {0,3,4,7,1,2,5,6};
 	int frameIndex = 0;
 	
 	private class MyTimerTask extends TimerTask{
 		@Override
 		public void run() {
+			System.gc();
 			Platform.runLater( () -> processNextFile() );
 		}
 
@@ -102,19 +108,20 @@ public class MosaicController implements Initializable  {
 				Image image = new Image(url);
 				ImageView iv = viewList.get(frameChangeOrder[frameIndex]);
 				setImageSize(iv);
-				iv.setImage(image);	
+				iv.setImage(image);
+				frameIndex = (frameIndex+1)%frameChangeOrder.length;
+
 			}
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		frameIndex = (frameIndex+1)%frameChangeOrder.length;
 	}
 	
 	private void setImageSize(ImageView iv) {
-		double aspectRatio = 8.0/10.0;
+		//double aspectRatio = 8.0/10.0;
 		iv.setFitWidth(gridPane.getWidth()/2);
-		iv.setFitHeight(gridPane.getWidth()/2*aspectRatio);
+		iv.setFitHeight(gridPane.getHeight()/3);
 		
 	}
 
@@ -129,11 +136,8 @@ public class MosaicController implements Initializable  {
 
 	private void processSubtextLevelChange(File nextFile) {
 		subText.setText(nextFile.getName());
-		frameIndex = 0; 
+		//frameIndex = 0; 
 		processNextFile();
 	};
-	
-	private static int[] subTextChangeIndexs = {0,5,11,17,25,32};
-	private static String[] subTexts = {"Family","Hard Work","Joy","Food","Faith","Place"};
 	
 }

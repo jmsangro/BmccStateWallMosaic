@@ -25,10 +25,11 @@ public class Main extends Application {
 			//maximize on screen
 			Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 			double width = screenBounds.getHeight() * aspectRatio;
-
+			width = screenBounds.getWidth();
 			Scene scene = new Scene(root,width,screenBounds.getHeight());
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.setFullScreen(true);
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
