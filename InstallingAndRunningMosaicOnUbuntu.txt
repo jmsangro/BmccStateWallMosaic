@@ -1,0 +1,27 @@
+Installing and Running ClipLookup on Ubuntu
+1. Install Java - sudo apt install default-jre
+2. download openjfx 21 and unzip into /home/administrator/ . https://gluonhq.com/products/javafx/ version javafx-sdk-21.0.7 (don't use apt default openjfx)
+3. copy compiled code, all resource files into /home/administrator/BmccStateWallMosaic/
+4. Fix shell script to point to modules and dependencies.
+5. Make shell script executable by running chmod +x Mosaic.sh
+6. Run ./Mosaic.sh
+
+To setup to automatically start 2 instances on power up:
+Prerequisites
+install xdotool : sudo apt install xdotool (Needed for script level window moving)
+install font EHUSans-Regular.otf -> open file in Font preview tool (by double clicking on the font file) and click install.
+Copy BmccStateWallMosaic folder to /home/administrator/
+Copy display content to /home/administrator/BmccStateWallMosaic/images/
+Edit start2Mosaic.sh to point to content desired.
+Set so display doesn't go to sleep: Settings->Power->Power Saving->Screen Blank->Never
+
+The following is not necessary if during installation of Ubuntu you turned off "Require password to login".
+Set the account to auto login. Click on "Show Apps" control in lower left corner. Search for and select Users. Select administrator user, and click Unlock..., click the "on" control next to Automatic Login.
+
+The BIOS will need to be modified to auto boot upon power up. On power up keep hitting Esc to enter boot menu. Under Bios Setting -> Advanced -> Boot Options find the "After power loss" setting. Set it to "Power On".
+
+Setup start2Mosaics.sh to run on startup
+Click on "Show Apps" control in lower left corner. In top search bar, search for and select "Startup Applications".
+Click on the Add button
+In the "Add Startup Program" dialog, add a name. Browse to the script to launch and select it. Add a comment if desired. Click Add.
+
