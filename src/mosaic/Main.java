@@ -8,8 +8,7 @@ import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 
-//TODO investigate GridPane for moasic
-//TODO psuedo-randomize frame changing 
+
 public class Main extends Application {
 	public static ImageSource imageSource = null;
 	public static String stateName;
@@ -26,8 +25,13 @@ public class Main extends Application {
 			Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 			double width = screenBounds.getHeight() * aspectRatio;
 			width = screenBounds.getWidth();
+		    String styleSheet = System.getProperty("styleSheet");
+		    if (styleSheet == null) {
+		    	System.out.println("WARNING: No stylesheet specified with -DstyleSheet command line option. Reverting to application.css");
+		    	styleSheet = "application.css";
+		    }
 			Scene scene = new Scene(root,width,screenBounds.getHeight());
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource(styleSheet).toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setFullScreen(true);
 			primaryStage.show();
