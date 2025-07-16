@@ -59,25 +59,24 @@ public class MosaicController implements Initializable  {
 
 		
 		imageSource = Main.imageSource;
-		//titleLabel.setText(Main.stateName);
-//		for (int i = 0 ; i < 6 ; i++) {
-//			try {
-//				String url = imageList.get(i).toURL().toExternalForm();
-//				Image image = new Image(url);
-//				viewList.get(i).setImage(image);
-//			} catch (MalformedURLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-//		next = 6;
+	    String changeIntStr = System.getProperty("changeInterval");
+	    int changeInterval = ((changeIntStr == null)? 2000 : Integer.parseInt(changeIntStr));
+	    
+	    String frameOrderStr = System.getProperty("frameOrder");
+	    if (frameOrderStr != null) {
+	    	String[] splitStr = frameOrderStr.split(",");
+	    	for (int i=0 ; i < splitStr.length ; i++) {
+	    		frameChangeOrder[i] = Integer.parseInt(splitStr[i]);
+	    	}
+	    }
+	    
 		Timer timer = new Timer();
-		timer.schedule(new MyTimerTask(), 2000, 2000);
+		timer.schedule(new MyTimerTask(), 2000, changeInterval);
 
 		
 	};
 	
-	private static int[] frameChangeOrder = {0,3,4,7,1,2,5,6};
+	private int[] frameChangeOrder = {0,3,4,7,1,2,5,6};
 	int frameIndex = 0;
 	
 	private class MyTimerTask extends TimerTask{
